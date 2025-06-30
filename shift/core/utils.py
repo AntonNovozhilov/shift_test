@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 
+
 def time_year():
     """Метод для получения даты через год от текущей даты."""
 

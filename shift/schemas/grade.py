@@ -8,7 +8,9 @@ class Grade(BaseModel):
     @field_validator("selary")
     def validate_selary(cls, value: int) -> int:
         if value <= 0:
-            raise ValueError("Зарплата не может быть отрицательной или равной нулю.")
+            raise ValueError(
+                "Зарплата не может быть отрицательной или равной нулю."
+            )
         return value
 
 

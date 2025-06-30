@@ -1,11 +1,11 @@
 from datetime import datetime
-from shift.core.utils import time_year
 
 from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
 from sqlalchemy import Column, DateTime, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
 from shift.core.db import Base
+from shift.core.utils import time_year
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):

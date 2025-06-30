@@ -1,12 +1,10 @@
 from typing import Union
 
 from fastapi import Depends
-from fastapi_users import BaseUserManager, IntegerIDMixin, InvalidPasswordException
-from fastapi_users.authentication import (
-    AuthenticationBackend,
-    BearerTransport,
-    JWTStrategy,
-)
+from fastapi_users import (BaseUserManager, IntegerIDMixin,
+                           InvalidPasswordException)
+from fastapi_users.authentication import (AuthenticationBackend,
+                                          BearerTransport, JWTStrategy)
 from fastapi_users.fastapi_users import FastAPIUsers
 from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -47,7 +45,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
             )
         if user.email in password:
             raise InvalidPasswordException(
-                reason="Пароль не может содержать email пользователя"
+                reason="Пароль не может содержать логин пользователя"
             )
 
 

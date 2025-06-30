@@ -1,4 +1,4 @@
-from sqlalchemy import BigInteger, Column
+from sqlalchemy import BigInteger, Column, Integer
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import declarative_base, declared_attr
 
@@ -11,7 +11,7 @@ class PreBase:
     def __tablename__(cls):
         return cls.__name__.lower()
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
 
 
 Base = declarative_base(cls=PreBase)

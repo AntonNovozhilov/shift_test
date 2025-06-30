@@ -1,6 +1,5 @@
-from shift.models.grade import Grade
-
 from shift.crud.base import BaseCRUD
+from shift.models.grade import Grade
 
 
 class GradeCRUD(BaseCRUD):
