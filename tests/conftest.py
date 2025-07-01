@@ -6,8 +6,11 @@ from dotenv import load_dotenv
 from fastapi import Depends, HTTPException
 from fastapi.testclient import TestClient
 from sqlalchemy import Column, Integer
-from sqlalchemy.ext.asyncio import (AsyncSession, async_sessionmaker,
-                                    create_async_engine)
+from sqlalchemy.ext.asyncio import (
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
 
 from shift.core.db import get_async_session
 from shift.core.user import current_superuser, current_user, fastapi_user
@@ -15,8 +18,11 @@ from shift.main import app
 
 load_dotenv(".env")
 
-from shift.core.base import (  # Ensure Base is your declarative base, e.g., Base = declarative_base()
-    Base, Grade, User)
+from shift.core.base import (
+    Base,
+    Grade,
+    User,
+)
 
 
 class Base_Test(Base):
