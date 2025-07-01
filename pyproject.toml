@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "shift", from = "src"}]
+package-mode = false
 
 
 [build-system]

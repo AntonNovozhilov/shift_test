@@ -1,0 +1,26 @@
+volumes:
+  pg_data:
+  
+services:
+  db:
+    image: postgres:13.10
+    env_file: ./shift/.env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./shift_api_dump.sql:/docker-entrypoint-initdb.d/shift_api_dump.sql
+    ports:
+      - "5432:5432"
+  shift:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file: ./shift/.env
+    depends_on:
+      - db
+
+
