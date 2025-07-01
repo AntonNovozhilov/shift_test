@@ -9,13 +9,14 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from alembic import context
 from shift.core.db import Base
+from shift.core.config import setting
 from shift.models import Grade, User  # noqa
 
 load_dotenv(".env")
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-config.set_main_option("sqlalchemy.url", os.environ["db_url"])
+config.set_main_option("sqlalchemy.url", f'postgresql+asyncpg://{setting.postgres_user}:{setting.postgres_password}@{setting.db_host}:{setting.db_port}/{setting.postgres_db}')
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

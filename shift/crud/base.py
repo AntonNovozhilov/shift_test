@@ -11,6 +11,8 @@ class BaseCRUD:
         self.model = model
 
     async def create(self, session: AsyncSession, data: dict):
+        """Создание объекта."""
+
         in_data = self.model(**data.model_dump())
         session.add(in_data)
         await session.commit()
@@ -20,6 +22,8 @@ class BaseCRUD:
     async def get_object(
         self, session: AsyncSession, id: int, related: Optional[str] = None
     ):
+        """Получение объекта."""
+
         if related:
             result = await session.execute(
                 select(self.model)
@@ -34,6 +38,8 @@ class BaseCRUD:
         return result
 
     async def update(self, session: AsyncSession, obj, data: dict):
+        """Изменение объекта."""
+
         updated_data = data
         for key, value in updated_data.items():
             setattr(obj, key, value)
